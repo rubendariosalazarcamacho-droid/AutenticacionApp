@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
+import { UserProvider } from './context/UserContext'
 
 
 function App() {
@@ -13,13 +14,15 @@ function App() {
 
   return (
     <>
-    <Nav/>
-      <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/Profile' element={<Profile/>}></Route>
+      <Nav />
+      <UserProvider>
+        <Routes>
+          <Route path='/' element={<Home />}></Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='/Profile' element={<Profile />}></Route>
+        </Routes>
+      </UserProvider>
 
-      </Routes>
     </>
   )
 }

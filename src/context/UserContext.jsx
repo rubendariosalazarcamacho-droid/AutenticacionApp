@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { users } from "../database";
 
 export const UserContext = createContext() // Se crea el contexto UserContext, que sería un objeto que contiene: Provider y Consumer
 
@@ -9,11 +10,27 @@ export const UserProvider = ({children})=>{ // children es todo lo que se envuel
     
     const [user, setUser] = useState(null) // el estado global user: datos de usuario, null: no hay sesión
 
-    const login= (userData)=>{ // recibe datos ( name, email, etc)
-        setUser(userData)
+    function login(email, password){ // recibe datos (email: que es el nombre de usuario y password)
+        
+        const resultadoBusqueda= users.find((elemento)=>elemento.email === email)
+        if(!resultadoBusqueda){
+            // alert("usuario no existe")
+            return false
+        }
+
+        if(resultadoBusqueda.password !== password ){
+            // alert("credenciales inválidas") 
+            return false
+        }
+
+        setUser(resultadoBusqueda)
+        console.log(resultadoBusqueda)
+        // alert("Login exitoso")
+        return true
+        
     }
 
-    const logout=()=>{ // cierra sesión actulizando estado
+    function logout(){ // cierra sesión actualizando estado
         setUser(null)
     }
 
