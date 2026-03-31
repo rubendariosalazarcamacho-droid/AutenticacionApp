@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { UserContext } from "../context/UserContext"
 import { useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Navigate } from "react-router-dom"
 
 
 function Login() {
@@ -12,8 +12,12 @@ function Login() {
             password: ""
         }
     )
-    const {login} =useContext(UserContext) // extraigo la función login del contexto UserContext, para usarla al enviar el formulario
+    const {login, user} =useContext(UserContext) // extraigo la función login del contexto UserContext, para usarla al enviar el formulario
     const navigate= useNavigate()
+
+    if(user){
+        return <Navigate to="/Profile"/> // si existe usuario logueado
+    }
 
     function handleChange(e) {
         console.log("nombre del input: " + e.target.name)

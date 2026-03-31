@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import { UserProvider } from './context/UserContext'
+import PrivateRoute from './routes/privateRoute'
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/login' element={<Login />}></Route>
-          <Route path='/Profile' element={<Profile />}></Route>
+          <Route path='/Profile' element={<PrivateRoute><Profile /></PrivateRoute>}></Route>
         </Routes>
       </UserProvider>
 
