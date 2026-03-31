@@ -53,7 +53,7 @@ function Login() {
     return (
 
         <>
-            <h1 className="text-blue-600">Página Login</h1>
+            {/* <h1 className="text-blue-600">Página Login</h1> */}
             <div className="flex justify-center"><img className="mt-[50px] w-[120px] " src="/images/user2.svg" alt="icono usuario" /></div>
             <form onSubmit={handleSubmit} className="flex flex-col items-center p-12 gap-4">
                 <input name="email" value={form.email} className="w-full h-[50px] border-2 border-[#5294E2] pl-4 rounded-2xl bg-gray-100" type="text" onChange={handleChange} placeholder="userName" />
